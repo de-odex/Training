@@ -1,11 +1,15 @@
 import random
 import os
+import sys
 
 
-#clear screen
-def erase():
-    os.system('clear')
-
+if sys.platform.startswith('linux') or sys.platform.startswith('darwin'):
+	def erase():
+		os.system('clear')
+elif sys.platform.startswith('win32') or sys.platform.startswith('cygwin'):
+	def erase():
+		os.system('cls')
+erase()
 #gameplay
 def rps():
 
@@ -24,13 +28,13 @@ def rps():
 
     while keep_playing==True:
         erase()
-        playerguess=input(" Please enter Rock, Paper, or Scissors: ").lower() # Players Guess
+        playerguess=input("Please enter Rock, Paper, or Scissors: ").lower() # Players Guess
         computerguess=random.choice(["rock", "paper", "scissors"]) #Computer Guess
 
         erase()
-        print(" You guessed", playerguess)
+        print("You guessed", playerguess)
         print("")
-        print(" The computer guessed", computerguess)
+        print("The computer guessed", computerguess)
         print("")
 
         #Deciding who won
@@ -47,13 +51,13 @@ def rps():
 
         #Play again statment
         print("Would you like to play again? Yes or No?")
-        answer=input(">").lower()
+        answer=input("> ").lower()
         if answer == "no":
             erase()
-            print(" Thank you for playing! Here are your results!")
-            print(" Total Wins:", win)
-            print(" Total Loses:",lose)
-            print(" Total Ties:",ties)
+            print("Thank you for playing! Here are your results!")
+            print("Total Wins:", win)
+            print("Total Loses:",lose)
+            print("Total Ties:",ties)
             keep_playing=False
 
 
@@ -65,10 +69,8 @@ print("Scissors Cuts Paper,")
 print("And Paper Covers Rock!")
 print("---------------------------------")
 print("Would you like to play? Yes or No?")
-play=input(">").lower()
+play=input("> ").lower()
 if play=="yes":
     rps()
 else:
     print("Oh well!")
-
-

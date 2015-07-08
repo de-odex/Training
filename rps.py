@@ -24,7 +24,7 @@ def rps():
 
     while keep_playing==True:
         erase()
-        playerguess=raw_input(" Please enter Rock, Paper, or Scissors: ").lower() # Players Guess
+        playerguess=input(" Please enter Rock, Paper, or Scissors: ").lower() # Players Guess
         computerguess=random.choice(["rock", "paper", "scissors"]) #Computer Guess
 
         erase()
